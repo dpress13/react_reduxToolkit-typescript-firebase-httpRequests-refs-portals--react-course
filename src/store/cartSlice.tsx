@@ -1,6 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../store/index';
+import { CartItems } from '$/lib/Global.d';
 
-const initialState = {
+export type CartState = {
+  items: CartItems[];
+  totalQuantity: number;
+  totalAmount: number;
+  changed: boolean;
+};
+
+const initialState: CartState = {
   items: [],
   totalQuantity: 0,
   totalAmount: 0,
@@ -46,17 +55,29 @@ const cartSlice = createSlice({
       const existingItem = state.items.find(item => item.id === removedItem.id);
       state.totalQuantity--;
       // Remove item in with a quantity of 1
-      if (existingItem.quantity === 1) {
-        state.items = state.items.filter(item => item.id !== removedItem.id);
-      } else {
-        // Decrement an item's quantity if quantity > 1
-        existingItem.quantity--;
-        existingItem.itemTotalPrice = existingItem.itemTotalPrice - existingItem.price;
+      if (existingItem !== undefined) {
+        if (existingItem.quantity === 1) {
+          state.items = state.items.filter(item => item.id !== removedItem.id);
+        } else {
+          // Decrement an item's quantity if quantity > 1
+          existingItem.quantity--;
+          existingItem.itemTotalPrice = existingItem.itemTotalPrice - existingItem.price;
+        }
       }
     },
   },
 });
 
 export const cartActions = cartSlice.actions;
+
+// Used on App
+export const selectCart = (state: RootState) => state.cart;
+// Used on CartButton
+export const cartItems = (state: RootState) => state.cart.totalQuantity;
+// Used on Cart
+export const cartItemsSelector = (state: RootState) => state.cart.items;
+
+
+
 
 export default cartSlice.reducer;

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from './hooks/reduxHooks';
 
 import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
@@ -12,10 +12,10 @@ import { fetchCartData, sendCartData } from './store/cartActionCreators';
 let initialPageload = true;
 
 export default function App() {
-  const cart = useSelector(state => state.cart);
-  const cartIsVisible = useSelector(state => state.ui.cartIsVisible);
-  const notification = useSelector(state => state.ui.notification);
-  const dispatch = useDispatch();
+  const cart = useAppSelector(state => state.cart);
+  const cartIsVisible = useAppSelector(state => state.ui.cartIsVisible);
+  const notification = useAppSelector(state => state.ui.notification);
+  const dispatch = useAppDispatch();
 
   // Fetch cart from database on initial load (App.js & useEffect dependency both render 1x)
   useEffect(() => {
