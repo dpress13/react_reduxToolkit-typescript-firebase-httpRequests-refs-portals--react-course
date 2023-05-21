@@ -1,6 +1,7 @@
 {
-  "name": "react-complete-guide",
+  "name": "react_redux-toolkit-typescript-firebase-http-requests-refs-portals--react-course",
   "version": "0.1.0",
+  "homepage": "https://dpress13.github.io/https://github.com/dpress13/react_reduxToolkit-typescript-firebase-httpRequests-refs-portals--react-course",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -19,6 +20,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -41,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
