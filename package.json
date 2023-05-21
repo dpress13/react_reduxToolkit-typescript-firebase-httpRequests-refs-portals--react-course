@@ -1,7 +1,7 @@
 {
   "name": "react_redux-toolkit-typescript-firebase-http-requests-refs-portals--react-course",
   "version": "0.1.0",
-  "homepage": "https://dpress13.github.io/https://github.com/dpress13/react_reduxToolkit-typescript-firebase-httpRequests-refs-portals--react-course",
+  "homepage": "https://dpress13.github.io/react_reduxToolkit-typescript-firebase-httpRequests-refs-portals--react-course",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
