@@ -1,8 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from '../store/index';
+
+export type uiState = {
+    cartIsVisible: boolean;
+    notification: {
+      status: string
+      title: string
+      message: string
+    } | null
+};
+
+const initialState: uiState = { cartIsVisible: false, notification: null }
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { cartIsVisible: false, notification: null },
+  initialState,
   reducers: {
     // Show / hide cart when header button clicked
     // Used on CartButton
@@ -27,5 +39,8 @@ const uiSlice = createSlice({
 });
 
 export const uiActions = uiSlice.actions;
+
+export const cartIsVisible = (state: RootState) => state.ui.cartIsVisible;
+export const notification = (state: RootState) => state.ui.notification;
 
 export default uiSlice.reducer;

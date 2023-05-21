@@ -3,10 +3,15 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cartSlice';
 
 import style from './CartItem.module.css';
+import {  CartItems as CartType } from '$/lib/Global.d';
+
+type Props = {
+  items: CartType
+}
 
 // Used on Cart
-export default function CartItem({ item }) {
-  const { id, name, quantity, itemTotalPrice, price } = item;
+export default function CartItem({ items }: Props) {
+  const { id, name, price, quantity, itemTotalPrice } = items;
   const dispatch = useDispatch();
   
   const addItemHandler = () => {
